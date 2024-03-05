@@ -15,3 +15,5 @@ yarn-error.log
 /.vscode
 
 /.vagrant
+
+**/.DS_Store
