@@ -24,7 +24,41 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-
+                <div class="col-xl">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Title</th>
+                                    <th colspan="2" class="text-center">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($comments as $comment)
+                                    <tr>
+                                        <td>{{ $comment->id }}</td>
+                                        <td>{{ $comment->message }}</td>
+                                        <td><a href="{{ route('personal.comment.edit', $comment->id) /*передача id контроллеру*/}}" class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
+                                        <td>
+                                            <form action="{{ route('personal.comment.delete', $comment->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="border-0 bg-transparent">
+                                                    <i class="fas fa-trash text-danger"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->
