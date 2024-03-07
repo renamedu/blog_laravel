@@ -26,7 +26,7 @@ class CreateCommentsTable extends Migration
             $table->index('user_id', 'comments_user_idx');
             $table->index('post_id', 'comments_post_idx');
             // FK
-            $table->foreign('user_id', 'comments_user_fk')->on('tags')->references('id');
+            $table->foreign('user_id', 'comments_user_fk')->on('users')->references('id');
             $table->foreign('post_id', 'comments_post_fk')->on('posts')->references('id');
         });
     }
